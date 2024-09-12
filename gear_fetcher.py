@@ -14,19 +14,28 @@ items = []
 
 page = 0
 
-def catalog_query():
-    response = requests.get(catalogURL, catalog_params)
-    return response.json()
-
 def exit_program():
     input()
     sys.exit()
+
+def catalog_query():
+    print("quering")
+    response = requests.get(catalogURL, catalog_params)
+    print(response)
+    if response:
+        return response.json()
+    else:
+        print("Could not fetch a request from the URL. Do you have access to the website?")
+        exit_program()
 
 print("ROBLOX Gear items fetcher\nStarting...")
 
 # begin requests
 while True:
     data = catalog_query()
+    
+    exit_program()
+
     if "nextPageCursor" not in data:
         if page == 0: 
             print("API limit reached because of a previous session. Please wait a minute and restart this program again.")
