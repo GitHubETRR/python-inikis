@@ -65,6 +65,7 @@ for fila_idx, fila in enumerate(hoja.iter_rows(min_row=2, max_col=columnas.__len
         celda.alignment = Alignment(horizontal="center")
 
 total_celda = hoja.cell(tuple(hoja.rows)[-1][0].row+1, 3, "TOTAL")
-total_num_celda = hoja.cell(tuple(hoja.rows)[-1][0].row+1, 3, f"=SUM({tuple(hoja.rows)[3*2]}:{tuple(hoja.rows)[3*ventas.__len__()]})")
+total_num_celda = hoja.cell(tuple(hoja.rows)[-1][0].row, 4, f"=SUM(D1:D{tuple(hoja.rows).__len__()-1})")
+total_num_celda.number_format = '_-$ * #.##0,00_-;-$ * #.##0,00_-;_-$ * "-"??_-;_-@_-'
 
 excel.save("ventas_12_9.xlsx")
