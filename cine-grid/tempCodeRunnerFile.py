@@ -1,0 +1,1 @@
+random.sample(range(0, len(TEMAS)), 3)
